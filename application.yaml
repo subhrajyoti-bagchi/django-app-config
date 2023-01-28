@@ -1,22 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: myapp-argo-application
+  name: django-argo-application
   namespace: argocd
 spec:
   project: default
 
   source:
-    repoURL: https://gitlab.com/nanuchi/argocd-app-config.git
+    repoURL: https://github.com/subhrajyoti-bagchi/django-app-config.git
     targetRevision: HEAD
     path: dev
-  destination: 
-    server: https://kubernetes.default.svc
-    namespace: myapp
+  destination:
+    server: 10.31.198.3:6443
+    namespace: django-app
 
   syncPolicy:
     syncOptions:
-    - CreateNamespace=true
+      - CreateNamespace=true
 
     automated:
       selfHeal: true
